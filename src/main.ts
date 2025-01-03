@@ -1,7 +1,5 @@
-import { AsyncLocalStorage } from 'node:async_hooks';
+import { getContext, createContext } from '@finwo/context-module';
 import { sep } from 'node:path';
-
-const context = new AsyncLocalStorage();
 
 type CommandHandler = (argv:string[])=>number|Promise<number>;
 type CommandDescriptor = {
@@ -13,10 +11,6 @@ const commands: Record<string, CommandDescriptor> = {};
 type Context = {
   loglevel: number,
 } & Record<string, any>;
-
-export function getContext(): Context {
-  return context.getStore() as Context;
-};
 
 export function registerCommand(name: string, descriptor: CommandDescriptor): void {
   commands[name] = descriptor;
@@ -78,7 +72,7 @@ export async function executeCommand(argv: string[]): Promise<number> {
   }
 
   // Execute the command
-  return context.run(options, async () => {
+  return createContext(options, async () => {
     return commands[command].handler(argv);
   });
 };
