@@ -1,0 +1,24 @@
+{
+  "name": "@finwo/cli-module",
+  "version": "0.0.1",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "node build.js",
+    "postpublish": "PACKAGE_VERSION=$(jq -r .version < package.json) && PACKAGE_NAME=$(jq -r .name < package.json) && npm deprecate \"${PACKAGE_NAME}@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
+  },
+  "keywords": [],
+  "author": "Yersa Nordman <finwo@pm.me>",
+  "funding": "https://github.com/sponsors/finwo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finwo/ts-cli-module"
+  },
+  "license": "MIT",
+  "description": "Common cli utilities",
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "esbuild": "^0.24.2",
+    "esbuild-plugin-d.ts": "^1.3.1",
+    "fast-glob": "^3.3.2"
+  }
+}
