@@ -11,7 +11,7 @@
   "funding": "https://github.com/sponsors/finwo",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/finwo/ts-cli-module"
+    "url": "git+https://github.com/finwo/ts-cli-module.git"
   },
   "license": "MIT",
   "description": "Common cli utilities",
