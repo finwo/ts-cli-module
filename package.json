@@ -4,7 +4,8 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "node build.js",
-    "postpublish": "PACKAGE_VERSION=$(jq -r .version < package.json) && PACKAGE_NAME=$(jq -r .name < package.json) && npm deprecate \"${PACKAGE_NAME}@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
+    "postpublish": "PACKAGE_VERSION=$(jq -r .version < package.json) && PACKAGE_NAME=$(jq -r .name < package.json) && npm deprecate \"${PACKAGE_NAME}@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\"",
+    "example": "npx -y ts-node example.ts --verbose -vvv --config dinges.json dumpContext pizza calzone"
   },
   "keywords": [],
   "author": "Yersa Nordman <finwo@pm.me>",
